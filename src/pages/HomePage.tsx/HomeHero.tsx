@@ -1,4 +1,3 @@
-
 // import PrismLogohero from 'path-to-your-image' // Replace with actual image path
 // import GridBkg from 'path-to-your-background-image' // Replace with actual image path
 import { FaMagic, FaBolt, FaChartLine } from 'react-icons/fa';

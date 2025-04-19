@@ -1,52 +1,82 @@
-import { FaUserCircle, FaCaretDown } from 'react-icons/fa';
+import { FaBars, FaTimes } from 'react-icons/fa';
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 export default function Navbar() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
     <nav className="bg-gray-900 text-white shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex-shrink-0 text-3xl font-semibold text-indigo-600">
-            BrandBrainAI
+          <NavLink to="/" className="flex-shrink-0 flex text-3xl font-semibold text-indigo-600">
+            Social 
+            
+            <div className='text-white px-1 '>  Express </div>
+          </NavLink>
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="text-gray-300 hover:text-white focus:outline-none transition duration-300"
+            >
+              {isMobileMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+            </button>
           </div>
 
-          {/* Menu */}
+          {/* Desktop Menu */}
           <div className="hidden md:flex space-x-6">
-            <a href="/dashboard" className="text-gray-300 hover:text-white">Dashboard</a>
-            <a href="/createcontent" className="text-gray-300 hover:text-white">Content</a>
-            <a href="#scheduler" className="text-gray-300 hover:text-white">Scheduler</a>
-            <a href="#analytics" className="text-gray-300 hover:text-white">Analytics</a>
-
-            {/* Dropdown for More */}
-            <div className="relative group">
-              <button className="text-gray-300 hover:text-white flex items-center">
-                More <FaCaretDown className="ml-2" />
-              </button>
-              <div className="absolute right-0 mt-2 w-48 bg-gray-800 text-white rounded-md shadow-lg hidden group-hover:block">
-                <a href="#repurpose" className="block px-4 py-2 text-sm hover:bg-indigo-600">Repurpose</a>
-                <a href="#brand" className="block px-4 py-2 text-sm hover:bg-indigo-600">Brand</a>
-                <a href="#risk" className="block px-4 py-2 text-sm hover:bg-indigo-600">Risk</a>
-                <a href="#help" className="block px-4 py-2 text-sm hover:bg-indigo-600">Help</a>
-                <a href="#settings" className="block px-4 py-2 text-sm hover:bg-indigo-600">Settings</a>
-              </div>
-            </div>
+            <NavLink to="/dashboard" className="text-gray-300 hover:text-white transition duration-300">
+              Dashboard
+            </NavLink>
+            <NavLink to="/createcontent" className="text-gray-300 hover:text-white transition duration-300">
+              Content
+            </NavLink>
+            <NavLink to="/scheduler" className="text-gray-300 hover:text-white transition duration-300">
+              Scheduler
+            </NavLink>
+            <NavLink to="/analytics" className="text-gray-300 hover:text-white transition duration-300">
+              Analytics
+            </NavLink>
           </div>
 
-          {/* Signup and Login Buttons */}
-          <div className="flex items-center space-x-4">
-            <a
-              href="/signup"
+          {/* Desktop Signup Button */}
+          <div className="hidden md:flex items-center space-x-4">
+            <NavLink
+              to="/signup"
               className="text-indigo-400 hover:text-white font-semibold py-2 px-4 rounded-md border border-indigo-500 hover:bg-indigo-500 transition duration-300"
             >
               Sign Up
-            </a>
-            
-
-            {/* User Profile Icon */}
-            <a href="#profile" className="text-gray-300 hover:text-white">
-              <FaUserCircle className="w-8 h-8" />
-            </a>
+            </NavLink>
           </div>
+        </div>
+
+        {/* Mobile Menu */}
+        <div
+          className={`md:hidden bg-gray-800 rounded-lg shadow-lg mt-2 p-4 space-y-4 transition-all duration-300 ${
+            isMobileMenuOpen ? 'block' : 'hidden'
+          }`}
+        >
+          <NavLink to="/dashboard" className="block text-gray-300 hover:text-white transition duration-300">
+            Dashboard
+          </NavLink>
+          <NavLink to="/createcontent" className="block text-gray-300 hover:text-white transition duration-300">
+            Content
+          </NavLink>
+          <NavLink to="/scheduler" className="block text-gray-300 hover:text-white transition duration-300">
+            Scheduler
+          </NavLink>
+          <NavLink to="/analytics" className="block text-gray-300 hover:text-white transition duration-300">
+            Analytics
+          </NavLink>
+          <NavLink
+            to="/signup"
+            className="block text-indigo-400 hover:text-white font-semibold py-2 px-4 rounded-md border border-indigo-500 hover:bg-indigo-500 transition duration-300"
+          >
+            Sign Up
+          </NavLink>
         </div>
       </div>
     </nav>
