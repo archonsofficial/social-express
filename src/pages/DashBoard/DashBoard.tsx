@@ -38,7 +38,7 @@ export default function Dashboard() {
       </div>
 
       {/* User Detail Panel */}
-      <div className="max-w-6xl mx-auto px-6 py-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8">
         <div className="bg-gray-800 rounded-2xl shadow-xl p-6 flex flex-col md:flex-row items-center gap-6">
           <img src={user.profileImage} alt="Profile" className="w-24 h-24 rounded-full shadow-md" />
           <div className="text-center md:text-left">
@@ -55,7 +55,7 @@ export default function Dashboard() {
       </div>
 
       {/* Platform Selection Section */}
-      <div className="flex justify-center gap-8 mb-6">
+      <div className="flex flex-wrap justify-center gap-4 sm:gap-8 mb-6 px-4">
         {socialPlatforms.map((platform) => (
           <div
             key={platform.name}
@@ -70,35 +70,35 @@ export default function Dashboard() {
       </div>
 
       {/* Selected Platform Data */}
-      <div className="flex justify-center gap-12 px-6">
-        <div className="bg-gray-800 shadow-lg rounded-xl p-6 w-72">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 sm:px-6">
+        <div className="bg-gray-800 shadow-lg rounded-xl p-6">
           <h3 className="font-semibold text-xl text-gray-100 mb-4">Followers</h3>
           <div className="text-3xl font-bold text-blue-500">{selectedData?.followers}</div>
         </div>
-        <div className="bg-gray-800 shadow-lg rounded-xl p-6 w-72">
+        <div className="bg-gray-800 shadow-lg rounded-xl p-6">
           <h3 className="font-semibold text-xl text-gray-100 mb-4">Likes</h3>
           <div className="text-3xl font-bold text-blue-500">{selectedData?.likes}</div>
         </div>
-        <div className="bg-gray-800 shadow-lg rounded-xl p-6 w-72">
+        <div className="bg-gray-800 shadow-lg rounded-xl p-6">
           <h3 className="font-semibold text-xl text-gray-100 mb-4">Comments</h3>
           <div className="text-3xl font-bold text-blue-500">{selectedData?.comments}</div>
         </div>
       </div>
 
       {/* Engagement & Posts */}
-      <div className="flex justify-center gap-12 px-6 mt-8">
-        <div className="bg-gray-800 shadow-lg rounded-xl p-6 w-72">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 px-4 sm:px-6 mt-8">
+        <div className="bg-gray-800 shadow-lg rounded-xl p-6">
           <h3 className="font-semibold text-xl text-gray-100 mb-4">Engagement</h3>
           <div className="text-xl font-semibold">{selectedData?.engagement}</div>
         </div>
-        <div className="bg-gray-800 shadow-lg rounded-xl p-6 w-72">
+        <div className="bg-gray-800 shadow-lg rounded-xl p-6">
           <h3 className="font-semibold text-xl text-gray-100 mb-4">Posts</h3>
           <div className="text-3xl font-bold text-blue-500">{selectedData?.posts}</div>
         </div>
       </div>
 
       {/* Additional Insights Section */}
-      <div className="px-6 mt-8 text-center text-lg font-semibold">
+      <div className="px-4 sm:px-6 mt-8 text-center text-lg font-semibold">
         <div className="text-gray-400 mb-4">
           <span className="text-blue-500">Current Engagement: </span>
           {selectedData?.engagement}
@@ -110,7 +110,7 @@ export default function Dashboard() {
       </div>
 
       {/* AI Suggestions for Improving Engagement */}
-      <div className="mt-8 px-6 bg-gray-800 shadow-lg rounded-xl p-6">
+      <div className="mt-8 px-4 sm:px-6 bg-gray-800 shadow-lg rounded-xl p-6">
         <h3 className="font-semibold text-xl text-gray-100 mb-4">AI Recommendations</h3>
         <div className="text-lg text-gray-400">
           <p><span className="font-semibold">Suggested Action: </span>{aiSuggestions[selectedData?.engagement as keyof typeof aiSuggestions || 'Low']}</p>
