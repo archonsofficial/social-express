@@ -132,6 +132,7 @@ export default function AudienceSelection() {
         {/* Next Button */}
         {selectedAudiences.length > 0 && (
           <div className="mt-12">
+            <a href="/">
             <button
               onClick={() => {
                 console.log('Selected Audiences:', selectedAudiences);
@@ -140,6 +141,7 @@ export default function AudienceSelection() {
             >
               Next →
             </button>
+            </a>
           </div>
         )}
       </div>
