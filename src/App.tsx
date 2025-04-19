@@ -9,7 +9,6 @@ import DashboardPage from "./pages/DashBoard/DashBoard.js";
 import PlatformSelection from "./pages/AuthPages/PlatformSelection";
 import AudienceSelection from "./pages/AuthPages/AudienceSelection";
 
-
 function App() {
   return (
     <div className="">
