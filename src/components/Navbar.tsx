@@ -12,7 +12,7 @@ export default function Navbar() {
 
           {/* Menu */}
           <div className="hidden md:flex space-x-6">
-            <a href="#dashboard" className="text-gray-300 hover:text-white">Dashboard</a>
+            <a href="/dashboard" className="text-gray-300 hover:text-white">Dashboard</a>
             <a href="#content" className="text-gray-300 hover:text-white">Content</a>
             <a href="#scheduler" className="text-gray-300 hover:text-white">Scheduler</a>
             <a href="#analytics" className="text-gray-300 hover:text-white">Analytics</a>

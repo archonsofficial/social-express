@@ -8,6 +8,7 @@ import Login from "./pages/AuthPages/Login";
 import DashboardPage from "./pages/DashBoard/DashBoard.js";
 import PlatformSelection from "./pages/AuthPages/PlatformSelection";
 import AudienceSelection from "./pages/AuthPages/AudienceSelection";
+import Analytics from "./pages/AnalyticsPage/analytics.js";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/platformchoose" element={<PlatformSelection />} />
         <Route path="/audienceSelection" element={<AudienceSelection/>} />
+        <Route path="/analytics" element={<Analytics/>} />
       </Routes>
       <Footer/>
     </div>
