@@ -1,9 +1,31 @@
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useAuthStore } from '../store/useAuthStore';
+import { useEffect } from "react";
+import toast from "react-hot-toast";
+
+
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const {authUser ,checkAuth,logout}=useAuthStore();
+
+  useEffect(()=>{
+    checkAuth();
+  },[checkAuth]);
+  console.log({ authUser });
+
+  const handleSubmit=(async()=>{
+    try{
+      if(authUser? await logout():null){
+        console.log("logout Successfull");
+        toast.success("Logout Successfull");
+      }
+    }catch(err){
+      console.log(err);
+    }
+  });
 
   return (
     <nav className="bg-gray-900 text-white shadow-lg">
@@ -72,10 +94,12 @@ export default function Navbar() {
             Analytics
           </NavLink>
           <NavLink
-            to="/signup"
+          onClick={authUser ? handleSubmit : undefined}
+            to={!authUser?"/login":"/"}
             className="block text-indigo-400 hover:text-white font-semibold py-2 px-4 rounded-md border border-indigo-500 hover:bg-indigo-500 transition duration-300"
           >
-            Sign Up
+            
+            {authUser ? "Logout" : "Login"}
           </NavLink>
         </div>
       </div>

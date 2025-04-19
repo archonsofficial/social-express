@@ -3,7 +3,8 @@ import { useAuthStore } from "../../store/useAuthStore"; // adjust path if neede
 import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
-  const [formData, setFormData] = useState({ name: "", email: "", password: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", password: "" , xPref:[],
+    fbPref:[],instaPref:[""]});
   const signup = useAuthStore((state) => state.signup);
   const isLoading = useAuthStore((state) => state.isLoading);
   const navigate = useNavigate();
