@@ -33,17 +33,21 @@ export const useAuthStore = create<AuthStore>((set, get) => ({
   signup: async (data) => {
     set({ isLoading: true });
     try {
+      console.log(data);
       const res = await axiosInstance.post<AuthUser>("/auth/register", data);
-      const { token, ...user } = res.data;
+      const { token } = res.data;
+      console.log("Token:", token);
 
-      Cookies.set("token", token!, { secure: true });
+      // Cookies.set("token", token!, { secure: true });
+      localStorage.setItem("token", JSON.stringify(res.data.token));
       localStorage.setItem("authUser", JSON.stringify(res.data));
+      // set({ authUser: res.data });
       set({ authUser: res.data });
+      console.log("step2");
       toast.success("Signup successful!");
     } catch (error) {
       const axiosErr = error as AxiosError;
-const msg = (axiosErr.response?.data as { message?: string })?.message || "Signup failed";
-
+      const msg = (axiosErr.response?.data as { message?: string })?.message || "Signup failed";
     } finally {
       set({ isLoading: false });
     }
@@ -52,6 +56,7 @@ const msg = (axiosErr.response?.data as { message?: string })?.message || "Signu
   login: async (data) => {
     set({ isLoading: true });
     try {
+      console.log(data);
       const res = await axiosInstance.post<AuthUser>("/auth/login", data, { withCredentials: true });
       Cookies.set("token", res.data.token!, { secure: true });
       localStorage.setItem("authUser", JSON.stringify(res.data));
@@ -74,6 +79,7 @@ const msg = (axiosErr.response?.data as { message?: string })?.message || "Signu
       toast.error("Logout failed");
     } finally {
       Cookies.remove("token");
+      localStorage.removeItem("token");
       localStorage.removeItem("authUser");
       set({ authUser: null });
       toast.success("Logged out successfully!");
