@@ -67,10 +67,12 @@ export default function Navbar() {
           {/* Desktop Signup Button */}
           <div className="hidden md:flex items-center space-x-4">
             <NavLink
-              to="/signup"
+                onClick={authUser ? handleSubmit : undefined}
+                to={!authUser?"/login":"/"}
               className="text-indigo-400 hover:text-white font-semibold py-2 px-4 rounded-md border border-indigo-500 hover:bg-indigo-500 transition duration-300"
             >
-              Sign Up
+                          {authUser ? "Logout" : "Login"}
+
             </NavLink>
           </div>
         </div>
