@@ -23,7 +23,7 @@ export default function HowItWorks() {
     <section className="bg-gradient-to-br from-white to-indigo-50 py-20 px-6" id="how-it-works">
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-5xl font-extrabold text-gray-900 mb-6 leading-tight tracking-tight">
-          How <span className="text-indigo-600">BrandBrainAI</span> Works
+          How <span className="text-indigo-600">Social Express</span> Works
         </h2>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-16">
           From content creation to smart automation, here’s your 3-step journey to a strong digital presence.

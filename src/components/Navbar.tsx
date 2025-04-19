@@ -7,7 +7,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0 text-3xl font-semibold text-indigo-600">
-            BrandBrainAI
+            Social Express
           </div>
 
           {/* Menu */}

@@ -101,7 +101,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 border-t border-gray-800 pt-6 text-center text-sm text-gray-400">
-          <p>&copy; {new Date().getFullYear()} BrandBrainAI. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Social Express. All rights reserved.</p>
         </div>
       </div>
     </footer>
