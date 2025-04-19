@@ -20,12 +20,12 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section className="bg-gradient-to-br from-white to-indigo-50 py-20 px-6" id="how-it-works">
+    <section className="bg-gray-900 text-gray-200 py-20 px-6" id="how-it-works">
       <div className="max-w-7xl mx-auto text-center">
-        <h2 className="text-5xl font-extrabold text-gray-900 mb-6 leading-tight tracking-tight">
-          How <span className="text-indigo-600">BrandBrainAI</span> Works
+        <h2 className="text-5xl font-extrabold text-indigo-400 mb-6 leading-tight tracking-tight">
+          How <span className="text-indigo-500">Social Express</span> Works
         </h2>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-16">
+        <p className="text-lg text-gray-400 max-w-2xl mx-auto mb-16">
           From content creation to smart automation, here’s your 3-step journey to a strong digital presence.
         </p>
 
@@ -33,13 +33,13 @@ export default function HowItWorks() {
           {steps.map((step, index) => (
             <div
               key={index}
-              className="bg-white border border-gray-200 p-8 rounded-3xl shadow-xl hover:shadow-2xl hover:scale-[1.03] transition-all duration-300 group"
+              className="bg-gray-800 border border-gray-700 p-8 rounded-3xl shadow-md hover:shadow-indigo-500/50 hover:scale-[1.03] transition-all duration-300 group"
             >
               <div className="mb-6 flex justify-center">{step.icon}</div>
-              <h3 className="text-2xl font-semibold text-gray-800 mb-3 group-hover:text-indigo-600 transition-colors">
+              <h3 className="text-2xl font-semibold text-gray-200 mb-3 group-hover:text-indigo-500 transition-colors">
                 {step.title}
               </h3>
-              <p className="text-gray-500 text-sm leading-relaxed">{step.description}</p>
+              <p className="text-gray-400 text-sm leading-relaxed">{step.description}</p>
             </div>
           ))}
         </div>

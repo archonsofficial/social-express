@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa"; // Import icons
 
 export default function CreateContent() {
   const [idea, setIdea] = useState("");
@@ -31,47 +32,45 @@ export default function CreateContent() {
         </div>
 
         {/* Tone Selector */}
-        {/* Tone Selector - Expressive Style */}
-<div className="space-y-2">
-  <label className="text-sm text-gray-400">How do you want your audience to feel?</label>
-  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-    {[
-      { label: "Professional", emoji: "💼", desc: "Polished & confident" },
-      { label: "Funny", emoji: "😂", desc: "Light-hearted & witty" },
-      { label: "Casual", emoji: "😎", desc: "Relaxed & relatable" },
-      { label: "Bold", emoji: "🔥", desc: "Unapologetic & edgy" },
-      { label: "Inspiring", emoji: "🌟", desc: "Motivational & uplifting" },
-      { label: "Empathetic", emoji: "🤝", desc: "Warm & understanding" },
-      { label: "Sassy", emoji: "💅", desc: "Confident with flair" },
-    ].map(({ label, emoji, desc }) => (
-      <button
-        key={label}
-        type="button"
-        onClick={() => setTone(label)}
-        className={`p-4 rounded-xl border transition-all text-left ${
-          tone === label
-            ? "bg-indigo-500 border-indigo-600 shadow-md"
-            : "bg-gray-800 border-gray-700 hover:border-indigo-400"
-        }`}
-      >
-        <div className="flex items-center gap-3">
-          <span className="text-2xl">{emoji}</span>
-          <div>
-            <p className="font-semibold">{label}</p>
-            <p className="text-sm text-white">{desc}</p>
+        <div className="space-y-2">
+          <label className="text-sm text-gray-400">How do you want your audience to feel?</label>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+            {[
+              { label: "Professional", emoji: "💼", desc: "Polished & confident" },
+              { label: "Funny", emoji: "😂", desc: "Light-hearted & witty" },
+              { label: "Casual", emoji: "😎", desc: "Relaxed & relatable" },
+              { label: "Bold", emoji: "🔥", desc: "Unapologetic & edgy" },
+              { label: "Inspiring", emoji: "🌟", desc: "Motivational & uplifting" },
+              { label: "Empathetic", emoji: "🤝", desc: "Warm & understanding" },
+              { label: "Sassy", emoji: "💅", desc: "Confident with flair" },
+            ].map(({ label, emoji, desc }) => (
+              <button
+                key={label}
+                type="button"
+                onClick={() => setTone(label)}
+                className={`p-4 rounded-xl border transition-all text-left ${
+                  tone === label
+                    ? "bg-indigo-500 border-indigo-600 shadow-md"
+                    : "bg-gray-800 border-gray-700 hover:border-indigo-400"
+                }`}
+              >
+                <div className="flex items-center gap-3">
+                  <span className="text-2xl">{emoji}</span>
+                  <div>
+                    <p className="font-semibold">{label}</p>
+                    <p className="text-sm text-white">{desc}</p>
+                  </div>
+                </div>
+              </button>
+            ))}
           </div>
         </div>
-      </button>
-    ))}
-  </div>
-</div>
-
 
         {/* Generate Button */}
         <div className="text-center">
           <button
             type="button"
-            className="bg-green-500 hover:bg-green-600 transition duration-300 px-8 py-3 rounded-lg font-semibold"
+            className="bg-green-500 hover:bg-green-600 transition duration-300 px-8 py-3 rounded-lg font-semibold w-full sm:w-auto"
           >
             Generate Content
           </button>
@@ -79,8 +78,12 @@ export default function CreateContent() {
 
         {/* Platform Preview Tabs */}
         <div>
-          <div className="flex justify-center gap-6 border-b border-gray-700 pb-2 mb-4">
-            {["insta", "fb", "linkedin"].map((platform) => (
+          <div className="flex justify-center gap-6 border-b border-gray-700 pb-2 mb-4 overflow-x-auto">
+            {[
+              { platform: "insta", icon: <FaInstagram /> },
+              { platform: "fb", icon: <FaFacebook /> },
+              { platform: "linkedin", icon: <FaLinkedin /> },
+            ].map(({ platform, icon }) => (
               <button
                 key={platform}
                 className={`capitalize font-medium px-4 py-2 ${
@@ -90,7 +93,7 @@ export default function CreateContent() {
                 }`}
                 onClick={() => setSelectedTab(platform as "insta" | "fb" | "linkedin")}
               >
-                {platform}
+                <span className="text-2xl">{icon}</span>
               </button>
             ))}
           </div>
