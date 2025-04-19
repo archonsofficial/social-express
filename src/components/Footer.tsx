@@ -1,4 +1,6 @@
-import React from 'react';
+
+import { NavLink } from 'react-router-dom';
+
 
 // Facebook Icon Component
 const Facebook = ({ className }: { className?: string }) => (
@@ -44,9 +46,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Left - Brand Name + Short Description */}
           <div>
-            <a href="#" className="text-3xl font-extrabold text-indigo-600 tracking-tight">
-              BrandBrain<span className="text-gray-300">AI</span>
-            </a>
+          <NavLink to="/" className="flex-shrink-0 flex text-3xl font-semibold text-indigo-600">
+            Social 
+            
+            <div className='text-white px-3 '>  Express </div>
+          </NavLink>
             <p className="mt-4 text-gray-400 text-sm">
               Elevating your social media presence with AI-driven strategy, content repurposing, and real-time brand protection.
             </p>

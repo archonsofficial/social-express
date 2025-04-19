@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa"; // Import icons
 
 export default function CreateContent() {
   const [idea, setIdea] = useState("");
@@ -78,7 +79,11 @@ export default function CreateContent() {
         {/* Platform Preview Tabs */}
         <div>
           <div className="flex justify-center gap-6 border-b border-gray-700 pb-2 mb-4 overflow-x-auto">
-            {["insta", "fb", "linkedin"].map((platform) => (
+            {[
+              { platform: "insta", icon: <FaInstagram /> },
+              { platform: "fb", icon: <FaFacebook /> },
+              { platform: "linkedin", icon: <FaLinkedin /> },
+            ].map(({ platform, icon }) => (
               <button
                 key={platform}
                 className={`capitalize font-medium px-4 py-2 ${
@@ -88,7 +93,7 @@ export default function CreateContent() {
                 }`}
                 onClick={() => setSelectedTab(platform as "insta" | "fb" | "linkedin")}
               >
-                {platform}
+                <span className="text-2xl">{icon}</span>
               </button>
             ))}
           </div>
