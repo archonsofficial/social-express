@@ -6,7 +6,9 @@ import Homepage from "./pages/HomePage.tsx/Homepage";
 import Signup from "./pages/AuthPages/Signup";
 import Login from "./pages/AuthPages/Login";
 import DashboardPage from "./pages/DashBoard/DashBoard.js";
-import SchedulerPage from "./pages/SchedulerPage/SchedulerPage.js";
+import PlatformSelection from "./pages/AuthPages/PlatformSelection";
+import AudienceSelection from "./pages/AuthPages/AudienceSelection";
+
 function App() {
   return (
     <div className="">
@@ -17,7 +19,8 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<DashboardPage />} />
-        <Route path="/scheduler" element={<SchedulerPage />} />
+        <Route path="/platformchoose" element={<PlatformSelection />} />
+        <Route path="/audienceSelection" element={<AudienceSelection/>} />
       </Routes>
       <Footer/>
     </div>

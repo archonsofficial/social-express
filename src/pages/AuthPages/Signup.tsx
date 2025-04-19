@@ -37,13 +37,13 @@ export default function Signup() {
               placeholder="••••••••"
             />
           </div>
-
           <button
-            type="submit"
+            type="button"
             className="w-full bg-indigo-500 hover:bg-indigo-600 transition duration-300 text-white font-semibold py-3 rounded-lg shadow-md"
+            onClick={() => window.location.href = '/platformchoose'}
           >
             Sign Up
-          </button>
+          </button>  
         </form>
 
         <p className="text-sm text-center text-gray-400 mt-6">
