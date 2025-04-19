@@ -95,34 +95,34 @@ export default function AudienceSelection() {
   ];
 
   return (
-    <section className="bg-gradient-to-r from-gray-200 via-gray-300 to-gray-400 text-gray-800 min-h-screen py-12 px-6 sm:px-8">
+    <section className="bg-gradient-to-r from-gray-200 via-gray-300 to-gray-400 text-gray-800 min-h-screen py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto text-center">
-        <h2 className="text-5xl font-extrabold text-indigo-700 mb-8">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-indigo-700 mb-6 sm:mb-8">
           Choose Your Target Audience
         </h2>
-        <p className="text-lg text-gray-600 mb-10 max-w-2xl mx-auto">
+        <p className="text-base sm:text-lg lg:text-xl text-gray-600 mb-8 sm:mb-10 max-w-xl sm:max-w-2xl mx-auto">
           Select multiple audience categories that suit your platform’s target demographic. Choose as many as you'd like!
         </p>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8">
           {audienceOptions.map(({ name, icon, gradient, description }) => {
             const isSelected = selectedAudiences.includes(name);
             return (
               <div
                 key={name}
                 onClick={() => handleAudienceSelect(name)}
-                className={`relative bg-gradient-to-t ${gradient} transition-all duration-300 rounded-lg p-6 text-center cursor-pointer shadow-lg hover:shadow-xl`}
+                className={`relative bg-gradient-to-t ${gradient} transition-all duration-300 rounded-lg p-4 sm:p-6 text-center cursor-pointer shadow-lg hover:shadow-xl`}
               >
                 {isSelected && (
-                  <div className="absolute top-3 right-3 bg-white rounded-full shadow-md p-1">
-                    <IoCheckmarkCircleSharp className="text-green-500 text-3xl" />
+                  <div className="absolute top-2 sm:top-3 right-2 sm:right-3 bg-white rounded-full shadow-md p-1">
+                    <IoCheckmarkCircleSharp className="text-green-500 text-2xl sm:text-3xl" />
                   </div>
                 )}
                 <div className={`transition-transform duration-300 ${isSelected ? 'scale-105 opacity-90' : ''}`}>
                   {icon}
-                  <h3 className="text-2xl font-semibold text-white">{name}</h3>
-                  <p className="text-gray-100 mt-2">{description}</p>
+                  <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold text-white">{name}</h3>
+                  <p className="text-sm sm:text-base lg:text-lg text-gray-100 mt-1 sm:mt-2">{description}</p>
                 </div>
               </div>
             );
@@ -131,16 +131,16 @@ export default function AudienceSelection() {
 
         {/* Next Button */}
         {selectedAudiences.length > 0 && (
-          <div className="mt-12">
+          <div className="mt-8 sm:mt-10 lg:mt-12">
             <a href="/">
-            <button
-              onClick={() => {
-                console.log('Selected Audiences:', selectedAudiences);
-              }}
-              className="bg-indigo-700 hover:bg-indigo-800 text-white text-lg px-6 py-3 rounded-full shadow-md transition transform hover:scale-105 active:scale-95"
-            >
-              Next →
-            </button>
+              <button
+                onClick={() => {
+                  console.log('Selected Audiences:', selectedAudiences);
+                }}
+                className="bg-indigo-700 hover:bg-indigo-800 text-white text-sm sm:text-base lg:text-lg px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow-md transition transform hover:scale-105 active:scale-95"
+              >
+                Next →
+              </button>
             </a>
           </div>
         )}

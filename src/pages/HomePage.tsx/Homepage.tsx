@@ -6,7 +6,6 @@ import FaqSection from "./FaqSection";
 function Homepage() {
   return (
     <div>
-      {" "}
       <HomeHero />
       <FeaturesSection />
       <HowItWorks />
