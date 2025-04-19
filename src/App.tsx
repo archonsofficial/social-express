@@ -6,7 +6,7 @@ import Homepage from "./pages/HomePage.tsx/Homepage";
 import Signup from "./pages/AuthPages/Signup";
 import Login from "./pages/AuthPages/Login";
 import DashboardPage from "./pages/DashBoard/DashBoard.js";
-
+import SchedulerPage from "./pages/SchedulerPage/SchedulerPage.js";
 function App() {
   return (
     <div className="">
@@ -17,6 +17,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/scheduler" element={<SchedulerPage />} />
       </Routes>
       <Footer/>
     </div>

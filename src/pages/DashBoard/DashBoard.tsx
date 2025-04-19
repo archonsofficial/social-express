@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import PostGenerator from "../../components/PostGenerator.tsx"
 
@@ -21,10 +20,38 @@ export default function Dashboard() {
     Low: "To improve engagement, you can focus on posting at optimal times and interact more with your followers. Look into targeted advertising or partnerships."
   };
 
+  // Dummy user data
+  const user = {
+    name: "Aarav Mehta",
+    username: "@aarav_creative",
+    type: "Personal Brand",
+    profileImage: "https://i.pravatar.cc/100",
+    interests: "Tech, Motivation, Startups",
+    preferences: "Reels, Carousels, Quote Posts",
+    targetAudience: "Young Entrepreneurs, Students, Tech Enthusiasts"
+  };
+
   return (
     <div className="min-h-screen bg-gray-100">
       <div className="flex justify-center pt-8 pb-6 bg-blue-100">
         <div className="text-center font-bold text-3xl">Social Media Dashboard</div>
+      </div>
+
+      {/* User Detail Panel */}
+      <div className="max-w-6xl mx-auto px-6 py-8">
+        <div className="bg-white rounded-2xl shadow-xl p-6 flex flex-col md:flex-row items-center gap-6">
+          <img src={user.profileImage} alt="Profile" className="w-24 h-24 rounded-full shadow-md" />
+          <div className="text-center md:text-left">
+            <h2 className="text-2xl font-bold text-gray-800">{user.name}</h2>
+            <p className="text-gray-500 mb-1">{user.username}</p>
+            <p className="text-sm text-blue-600 font-semibold mb-2">{user.type}</p>
+            <div className="text-gray-700 text-sm">
+              <p><span className="font-semibold text-gray-800">Interests:</span> {user.interests}</p>
+              <p><span className="font-semibold text-gray-800">Post Preferences:</span> {user.preferences}</p>
+              <p><span className="font-semibold text-gray-800">Target Audience:</span> {user.targetAudience}</p>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Platform Selection Section */}
@@ -91,7 +118,5 @@ export default function Dashboard() {
       </div>
       <PostGenerator/>
     </div>
-
-   
   );
 }
