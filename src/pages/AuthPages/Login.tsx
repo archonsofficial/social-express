@@ -14,8 +14,9 @@ export default function Login() {
 
   const handleLogin = async () => {
     try {
+      await login(formData);
+
       navigate("/platformchoose");
-      // await login(formData);
     } catch (err) {
       // Errors are handled via toast in the auth store
     }
