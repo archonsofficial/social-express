@@ -1,54 +1,37 @@
-# React + TypeScript + Vite
+<h1 align="center">Hack36 Readme</h1>
+<p align="center">
+</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<a href="https://hack36.in"> <img src="https://postimage.me/images/2025/04/19/built-at-hack36.png" height=24px> </a>
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Introduction:
+  A social media manager for content creators and small scale businesses (MSMEs) to manage their online presence by smart scheduling using AI based recommendation to reach a wider audience.
+  
+## Demo Video Link:
+  <a href="https://drive.google.com/file/d/1DTXOtMKBP0X2K8CgPbneYE82tLC80NR2/view?usp=sharing"> Video link </a>
+  
+## Presentation Link:
+  <a href="https://docs.google.com/presentation/d/1WneJvFo7jmY2mzudTZESoMgRNK0-JkLN/edit?usp=sharing&ouid=107993134582311830093&rtpof=true&sd=true"> PPT link </a>
+  
+  
+## Table of Contents:
 
-## Expanding the ESLint configuration
+## Technology Stack:
+  1) React
+  2) NodeJS
+  3) MongoDB
+  4) Meta APIs
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Contributors:
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+Team Name: Archons
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- [Aditya Vardhan Singh](https://github.com/aditya-vardhan-singh)
+- [Amaan Pathaan](https://github.com/eulerbutcooler)
+- [Mayank Gupta](https://github.com/mayank-704)
+- [Alia Haider](https://github.com/ALIA-HAIDER)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+### Made at:
+<a href="https://hack36.in"> <img src="https://postimage.me/images/2025/04/19/built-at-hack36.png" height=24px> </a>
