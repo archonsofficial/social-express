@@ -1,16 +1,29 @@
 import { useState } from "react";
 import { FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa"; // Import icons
+import { useInstaStore } from "../../store/useInstaStore.ts" // Import useInstaStore
+import ImageUploader from "../../lib/ImageUploader.tsx"; // Import ImageUploader
 
 export default function CreateContent() {
   const [idea, setIdea] = useState("");
   const [tone, setTone] = useState("Professional");
   const [content, setContent] = useState({
-    insta: "",
-    fb: "",
-    linkedin: "",
+    insta: { imageUrl: "", caption: "Your Instagram caption will appear here." },
+    fb: { imageUrl: "", caption: "Your Facebook caption will appear here." },
+    linkedin: { imageUrl: "", caption: "Your LinkedIn caption will appear here." },
   });
 
   const [selectedTab, setSelectedTab] = useState<"insta" | "fb" | "linkedin">("insta");
+
+  const { publishInstaPost } = useInstaStore(); // Destructure publishInstaPost from useInstaStore
+
+  const handlePostToPlatform = () => {
+    if (selectedTab === "insta") {
+      publishInstaPost(content.insta); // Call publishInstaPost with the Instagram content
+    } else {
+      alert(`Posting to ${selectedTab.toUpperCase()}...`);
+      // Add your logic to post content to other platforms here
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-900 text-white px-4 py-10">
@@ -66,6 +79,32 @@ export default function CreateContent() {
           </div>
         </div>
 
+        {/* Image Upload Input */}
+        <div className="space-y-2">
+          <label className="text-sm text-gray-400">Upload an image for your post</label>
+          <div className="flex items-center gap-4">
+            <ImageUploader
+              onUpload={(url: string) => {
+          setContent((prev) => ({
+            ...prev,
+            [selectedTab]: {
+              ...prev[selectedTab],
+              imageUrl: url,
+            },
+          }));
+              }}
+            />
+          </div>
+        </div>
+            {content[selectedTab]?.imageUrl && (
+              <img
+          src={content[selectedTab].imageUrl}
+          alt="Selected"
+          className="w-16 h-16 rounded-lg object-cover border border-gray-700"
+              />
+            )}
+          </div>
+
         {/* Generate Button */}
         <div className="text-center">
           <button
@@ -99,10 +138,36 @@ export default function CreateContent() {
           </div>
 
           {/* Preview Box */}
-          <div className="bg-gray-800 p-6 rounded-xl shadow-lg min-h-[150px]">
-            <p className="text-gray-300">
-              {content[selectedTab] || `Your ${selectedTab} content will appear here.`}
+            <div className="bg-gray-800 p-6 rounded-xl shadow-lg min-h-[150px] flex flex-col items-center justify-center gap-4">
+            {content[selectedTab]?.imageUrl ? (
+              <img
+              src={content[selectedTab].imageUrl}
+              alt={`${selectedTab} preview`}
+              className="max-w-full max-h-40 rounded-lg"
+              />
+            ) : (
+              <div className="w-full h-40 bg-gray-700 rounded-lg flex items-center justify-center text-gray-500">
+              No image selected
+              </div>
+            )}
+            <p className="text-gray-300 text-center">
+              {content[selectedTab]?.caption || `Your ${selectedTab} content will appear here.`}
             </p>
+            </div>
+
+          {/* Post to Selected Platform Button */}
+          <div className="text-center pt-4">
+            <button
+              type="button"
+              onClick={handlePostToPlatform}
+              className="w-full md:w-auto bg-blue-500 hover:bg-blue-600 transition px-8 py-3 rounded-lg font-bold text-white shadow-lg"
+            >
+              Post to {selectedTab === "insta"
+                ? "Instagram"
+                : selectedTab === "fb"
+                ? "Facebook"
+                : "LinkedIn"}
+            </button>
           </div>
         </div>
 
@@ -114,8 +179,7 @@ export default function CreateContent() {
           >
             Post to All Platforms
           </button>
+          </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 }

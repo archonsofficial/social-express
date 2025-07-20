@@ -1,25 +1,23 @@
-import { create } from "zustand";
-import { axiosInstance } from "../lib/axios";
-import toast from "react-hot-toast";
+import { create } from 'zustand';
+import {axiosInstance} from "../lib/axios.js"; // Adjust the path as needed
+import { toast } from "react-toast";
 import { AxiosError } from "axios";
 
+// Define the InstaStore type
 interface InstaStore {
   accessToken: string;
   isLoading: boolean;
   imageUrl: string;
   caption: string;
   scheduledDate: string | null;
-
-  // Setters
   setAccessToken: (token: string) => void;
   setImageUrl: (url: string) => void;
   setCaption: (caption: string) => void;
   setScheduledDate: (date: string | null) => void;
-
-  // Actions
   initiateOAuth: () => void;
   handleOAuthCallback: (code: string) => Promise<void>;
-  createPostNow: () => Promise<void>;
+  createPostNow: (data: { imageUrl: string; caption: string }) => Promise<void>;
+  publishInstaPost: (data: { imageUrl: string; caption: string }) => Promise<void>;
 }
 
 export const useInstaStore = create<InstaStore>((set, get) => ({
@@ -56,8 +54,9 @@ export const useInstaStore = create<InstaStore>((set, get) => ({
     }
   },
 
-  createPostNow: async () => {
-    const { accessToken, imageUrl, caption } = get();
+  createPostNow: async (data: { imageUrl: string; caption: string }) => {
+    const { accessToken } = get();
+    const { imageUrl, caption } = data;
 
     if (!accessToken || !imageUrl || !caption) {
       toast.error("Missing required fields.");
@@ -75,6 +74,30 @@ export const useInstaStore = create<InstaStore>((set, get) => ({
     } catch (error) {
       if (error instanceof AxiosError) {
         toast.error(error.response?.data?.error || "Failed to post on Instagram.");
+      }
+    } finally {
+      set({ isLoading: false });
+    }
+  },
+
+  publishInstaPost: async (data: { imageUrl: string; caption: string }) => {
+    const { imageUrl, caption } = data;
+
+    if (!imageUrl || !caption) {
+      toast.error("Missing required fields.");
+      return;
+    }
+
+    try {
+      set({ isLoading: true });
+      await axiosInstance.post("/instagram/create-post", {
+        imageUrl,
+        caption,
+      });
+      toast.success("Post published successfully!");
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        toast.error(error.response?.data?.error || "Failed to publish post on Instagram.");
       }
     } finally {
       set({ isLoading: false });
